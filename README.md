@@ -23,3 +23,11 @@ Sending:
 Receiving: 
 1.	sp.write("mac pause\x0d\x0a".encode())  
 2.	sp.write("radio rx 0\x0d\x0a".encode())  
+3.	m = sp.read_all().decode("utf-8")  
+4.	rda = rda+m  
+5.	if "7D7D" in rda:  
+6.	    msg2 = bytes.fromhex(rda]).decode('utf-8')+time.time_ns()  
+7.	data = {'api_key':API_KEY, 'technique':ToA, 'api_payload':msg2}  
+8.	r = requests.post(url = API_ENDPOINT, data = data)   
+9.	pastebin_url = r.text 
+
